@@ -7,5 +7,20 @@
 
 import Foundation
 
-print("Hello, World!")
+
+// Classe para o Buscardor
+
+
+protocol Search {
+    var search:  String  { get set }
+    
+    func Searching()
+    
+}
+
+extension Searching: Search {
+     print("procurando")
+}
+     
+
 
