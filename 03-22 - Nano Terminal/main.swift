@@ -36,6 +36,7 @@ func Search(){
     for clean in filtered {
         
         print(clean.printValue)
+        
     }
     
 }
