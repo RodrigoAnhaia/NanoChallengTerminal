@@ -6,11 +6,11 @@ var flatsArray: [Flats] = []
 
 
 // Objects
-let flatSunset = Flats(location: "Av. Cabo Branco, 4560, João Pessoa, Paraíba - Brasil", amount: 1044.32, isRentable: true, email: "bluesunset@bol.uol.com.br", fone: "+55 83 99912-6158")
+let flatSunset = Flats(location: "Av. Cabo Branco, 4560, João Pessoa, Paraíba - Brasil", amount: 1044.32, isRentable: true, email: "bluesunset@bol.uol.com.br", fone: "+55 83 99912-6158", guest: 3)
 
-let flatGolden = Flats(location: "Av. Cidade Jardim, 411, São Paulo, São Paulo - Brasil", amount: 2190.22, isRentable: false, email: "goldentower@yahoo.com.br", fone: "+55 11 3159-8840")
+let flatGolden = Flats(location: "Av. Cidade Jardim, 411, São Paulo, São Paulo - Brasil", amount: 2190.22, isRentable: false, email: "goldentower@yahoo.com.br", fone: "+55 11 3159-8840", guest: 2)
 
-let flatFac = Flats(location: "Av. Liberdade, 111, Presidente Prudente, São Paulo - Brasil", amount: 550.03, isRentable: true, email: "toledo@yahoo.com.br", fone: "+55 (18) 3408-2171")
+let flatFac = Flats(location: "Av. Liberdade, 111, Presidente Prudente, São Paulo - Brasil", amount: 550.03, isRentable: true, email: "toledo@yahoo.com.br", fone: "+55 (18) 3408-2171", guest: 1)
 
 // Append objects to the array
 flatsArray.append(flatGolden)
@@ -24,14 +24,18 @@ print(menu)
 
 // Search
 func Search(){
-   
+    
+    print("How many peoople?")
+    guard let x = readLine() else { return }
+    _ = flatsArray.filter { $0.location.contains(x)}
+
     print("Please enter your search")
     guard let request = readLine() else { return }
     
-    
-    
     // Using filter to compare Strings
     let filtered = flatsArray.filter { $0.location.contains(request) }
+
+    
     
     for clean in filtered {
         
@@ -48,11 +52,12 @@ struct Flats {
     let isRentable: Bool
     let email: String
     let fone: String
+    let guest: Int
     
     // CustomStringConvertible
     var printValue: String {
         
-        return "Location: \(location), Amount: \(amount), Email: \(email), Fone: \(fone)"
+        return "Location: \(location), Amount: \(amount), Email: \(email), Fone: \(fone), Guests: \(guest)"
     }
 }
 
