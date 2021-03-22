@@ -78,17 +78,17 @@ func Rent() {
     let checkoutDate = formatter.date(from: checkout)
     
     let days = flatsArray.first { $0.code == code }
-    var xxx: Date? = checkinDate
+    var check: Date? = checkinDate
     var result: Bool = false
     
     //Add Date to an array
-    while xxx! <= checkoutDate! {
+    while check! <= checkoutDate! {
         
-        if days!.occupiedPeriod.contains(xxx!) {
+        if days!.occupiedPeriod.contains(check!) {
             result = true
         }
-        days?.occupiedPeriod.append(xxx!)
-        xxx = Calendar.current.date(byAdding: .day, value: 1, to: xxx!)
+        days?.occupiedPeriod.append(check!)
+        check = Calendar.current.date(byAdding: .day, value: 1, to: check!)
         
     }
     //Print if the apartment is available in that period of time
